@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAU ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:
+radial-gradient(circle at center,
+#03151c 0%,
+#01070d 70%,
+#000000 100%);
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+/* ESTRELLAS */
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+opacity:.7;
+animation:twinkle 4s infinite;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.2;}
+50%{opacity:1;}
+}
+
+/* CONTENEDOR */
+
+.scene{
+position:relative;
+width:100%;
+height:100vh;
+}
+
+/* ARBUSTO */
+
+.bush{
+position:absolute;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+
+width:280px;
+height:140px;
+
+background:
+radial-gradient(circle,
+#1f8f4f,
+#0c4b2a);
+
+border-radius:50%;
+
+filter:
+drop-shadow(0 0 20px rgba(0,255,120,.3));
+}
+
+/* PASTO */
+
+.grass{
+position:absolute;
+bottom:0;
+width:4px;
+border-radius:50px;
+background:
+linear-gradient(
+to top,
+#0c5d2f,
+#3cff7a
+);
+
+transform-origin:bottom center;
+animation:swayGrass 4s ease-in-out infinite;
+}
+
+@keyframes swayGrass{
+
+0%,100%{
+transform:rotate(-5deg);
+}
+
+50%{
+transform:rotate(5deg);
+}
+
+}
+
+/* FLORES */
+
+.flower{
+
+position:absolute;
+cursor:pointer;
+
+animation:
+flowerMove 5s ease-in-out infinite;
+}
+
+@keyframes flowerMove{
+
+0%,100%{
+transform:rotate(-2deg);
+}
+
+50%{
+transform:rotate(2deg);
+}
+
+}
+
+/* TALLO */
+
+.stem{
+position:absolute;
+width:6px;
+background:
+linear-gradient(
+to top,
+#226c3b,
+#7dff8d
+);
+border-radius:20px;
+}
+
+/* HOJAS */
+
+.leaf{
+position:absolute;
+
+width:32px;
+height:60px;
+
+background:
+linear-gradient(
+#57ff87,
+#11612f
+);
+
+opacity:.95;
+}
+
+.leaf.left{
+border-radius:0 100% 0 100%;
+transform:rotate(-35deg);
+}
+
+.leaf.right{
+border-radius:100% 0 100% 0;
+transform:rotate(35deg);
+}
+
+/* FLOR */
+
+.bloom{
+position:absolute;
+width:90px;
+height:90px;
+}
+
+.petal{
+position:absolute;
+background:
+radial-gradient(circle at top,
+#ffd2ef,
+#ff7fcb,
+#ff4ab0);
+
+box-shadow:
+0 0 15px #ff80d4,
+0 0 30px #ff80d4,
+0 0 60px rgba(255,80,190,.8);
+}
+
+.p1{
+width:36px;
+height:50px;
+left:27px;
+top:0;
+border-radius:50% 50% 0 0;
+}
+
+.p2{
+width:36px;
+height:40px;
+left:0;
+top:18px;
+border-radius:50%;
+}
+
+.p3{
+width:36px;
+height:40px;
+right:0;
+top:18px;
+border-radius:50%;
+}
+
+.center{
+position:absolute;
+width:28px;
+height:14px;
+left:31px;
+top:38px;
+
+background:
+radial-gradient(circle,
+#fff7d1,
+#ffd74f);
+
+border-radius:50%;
+
+box-shadow:
+0 0 10px white,
+0 0 25px #ffd74f;
+}
+
+/* FLORES POSICION */
+
+.f1{
+left:50%;
+bottom:180px;
+margin-left:-150px;
+}
+
+.f2{
+left:50%;
+bottom:260px;
+margin-left:-45px;
+}
+
+.f3{
+left:50%;
+bottom:180px;
+margin-left:70px;
+}
+
+/* CHISPAS */
+
+.spark{
+position:absolute;
+
+width:4px;
+height:4px;
+
+border-radius:50%;
+
+background:#ffe768;
+
+box-shadow:
+0 0 10px #ffe768,
+0 0 25px #ffe768;
+
+animation:floatUp 3s infinite;
+}
+
+@keyframes floatUp{
+
+0%{
+opacity:0;
+transform:translateY(0);
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:translateY(-60px);
+}
+
+}
+
+/* MODAL */
+
+.modal{
+
+position:fixed;
+inset:0;
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+background:rgba(0,0,0,.65);
+
+backdrop-filter:blur(10px);
+
+z-index:999;
+}
+
+.card{
+
+width:90%;
+max-width:320px;
+
+padding:25px;
+
+background:
+rgba(10,15,20,.85);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+text-align:center;
+
+color:white;
+
+box-shadow:
+0 0 30px rgba(255,120,200,.25);
+}
+
+.card h2{
+color:#ff9edb;
+margin-bottom:15px;
+}
+
+.card button{
+
+margin-top:20px;
+
+padding:12px 24px;
+
+border:none;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+45deg,
+#ff7ecf,
+#ff4fb0
+);
+
+color:white;
+
+font-size:16px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene">
+
+<div class="bush"></div>
+
+<div class="flower f1" onclick="showMessage(0)">
+
+<div class="bloom">
+<div class="petal p1"></div>
+<div class="petal p2"></div>
+<div class="petal p3"></div>
+<div class="center"></div>
+</div>
+
+<div class="stem" style="height:220px;left:42px;top:60px;"></div>
+
+<div class="leaf left"
+style="left:0;top:120px;"></div>
+
+<div class="leaf right"
+style="left:45px;top:170px;"></div>
+
+</div>
+
+<div class="flower f2" onclick="showMessage(1)">
+
+<div class="bloom">
+<div class="petal p1"></div>
+<div class="petal p2"></div>
+<div class="petal p3"></div>
+<div class="center"></div>
+</div>
+
+<div class="stem" style="height:300px;left:42px;top:60px;"></div>
+
+<div class="leaf left"
+style="left:0;top:160px;"></div>
+
+<div class="leaf right"
+style="left:45px;top:220px;"></div>
+
+</div>
+
+<div class="flower f3" onclick="showMessage(2)">
+
+<div class="bloom">
+<div class="petal p1"></div>
+<div class="petal p2"></div>
+<div class="petal p3"></div>
+<div class="center"></div>
+</div>
+
+<div class="stem" style="height:220px;left:42px;top:60px;"></div>
+
+<div class="leaf left"
+style="left:0;top:120px;"></div>
+
+<div class="leaf right"
+style="left:45px;top:170px;"></div>
+
+</div>
+
+</div>
+
+<div class="modal" id="modal">
+
+<div class="card">
+
+<h2>❤️</h2>
+
+<p id="messageText"></p>
+
+<button onclick="closeModal()">
+Cerrar
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const messages = [
+
+`Es la primera vez que escribo una carta pensando en alguien, y me alegra mucho que sea para ti, porque eres mi única razón para hacer muchas cosas por primera vez. Te amo, y déjame demostrarte que mis errores no son más grandes que mis ganas de cambiar por ti, porque si fallo en algo, créeme que lo cambiaré solo por ti. Porque tú lo vales, Paula; vales cada cosa, mínima o grande, que estoy dispuesto a hacer por ti.`,
+
+`Eres la razón de mi vida, eres la razón por la que quiero lograr tantas cosas. Lo eres todo para mí, y no miento cuando digo que TE AMO, María Paula, porque contigo aprendo tanto y contigo sé que puedo lograr mucho más.
+
+No pienso dejarte ir. Cada vez que pueda, quiero luchar por ti, y de corazón te digo que por ti me levanto cada mañana agradeciendo la persona que tengo a mi lado, porque Dios no se equivoca. Sé que Dios te envió para mí, y eres el mayor regalo que me pudo haber dado.
+
+Gracias por cada momento, por cada enseñanza y por cada sonrisa que has traído a mi vida. Quiero que sepas que mi amor por ti es sincero, y que cada día encuentro más razones para admirarte, valorarte y elegirte. Eres una persona increíble, y me siento afortunado de poder compartir mi vida contigo.`,
+
+`Perdón si te fallo. Perdón por mis errores, perdón por hacerte llorar y perdón por tantas cosas que siempre me hacen pensar y preguntarme: ¿por qué lo hice?, ¿por qué lo dije?, ¿por qué no me medí?
+
+Contigo aprendo, Paula, y desde lo más profundo de mi ser no quiero que dudes de que cada día quiero ser una mejor pareja y una mejor persona para ti. Porque quiero un futuro contigo, porque sueño con tantas cosas a tu lado, y porque no quiero que nunca dudes de este amor ni de todo lo que podemos conseguir juntos.
+
+Quiéreme, ámame y nunca dudes de mí, porque por ti cambio lo que sea necesario y por ti estoy dispuesto a hacer tantas cosas que jamás habría imaginado. Perdón por mi ego, perdón por mi orgullo, pero ten por seguro que te veo como mi compañera de vida y que tu felicidad también es la mía.
+
+Sigue este camino conmigo y nunca dudes de este amor que cada día crece más por ti. Quiero demostrarte con hechos, y no solo con palabras, que eres una de las personas más importantes de mi vida y que cada esfuerzo que hago tiene como propósito construir algo hermoso y duradero a tu lado.`
+
+];
+
+function showMessage(i){
+
+document.getElementById("messageText")
+.innerText=messages[i];
+
+document.getElementById("modal")
+.style.display="flex";
+}
+
+function closeModal(){
+
+document.getElementById("modal")
+.style.display="none";
+}
+
+/* ESTRELLAS */
+
+for(let i=0;i<120;i++){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.width=
+star.style.height=
+(Math.random()*3+1)+"px";
+
+star.style.left=
+Math.random()*100+"vw";
+
+star.style.top=
+Math.random()*80+"vh";
+
+star.style.animationDelay=
+Math.random()*5+"s";
+
+document.body.appendChild(star);
+}
+
+/* PASTO */
+
+for(let i=0;i<40;i++){
+
+const grass=document.createElement("div");
+
+grass.className="grass";
+
+grass.style.height=
+(60+Math.random()*120)+"px";
+
+grass.style.left=
+Math.random()*100+"vw";
+
+grass.style.animationDelay=
+Math.random()*3+"s";
+
+document.getElementById("scene")
+.appendChild(grass);
+}
+
+/* CHISPAS */
+
+document.querySelectorAll(".flower")
+.forEach(flower=>{
+
+for(let i=0;i<20;i++){
+
+let s=document.createElement("div");
+
+s.className="spark";
+
+s.style.left=
+(20+Math.random()*50)+"px";
+
+s.style.top=
+(10+Math.random()*30)+"px";
+
+s.style.animationDelay=
+Math.random()*3+"s";
+
+flower.appendChild(s);
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
